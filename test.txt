@@ -1,0 +1,14 @@
+1
+size 10
+add 37 dd
+add 18 aa
+add 17 bb
+add 20 ll
+add 13 ww
+add 38 oo
+print
+delete 18
+print
+delete 38
+print
+stop
