@@ -42,6 +42,7 @@ public:
 				std::cout << i << " " << items[i]->key << " " << items[i]->data << std::endl;
 			}
 		}
+		std::cout << std::endl;
 	}
 
 	void rehashtable() {
@@ -126,9 +127,6 @@ int main()
 			else if (order == "delete") {
 				std::cin >> key2;
 				hashtab.deleteItem(key2);
-			}
-			else if (order == "table") {
-				hashtab.rehashtable();
 			}
 		} while (order != "stop");
 	}
