@@ -1,0 +1,28 @@
+2
+size 10 
+add 13 ala 
+add 23 ola 
+add 14 ula 
+add 34 ela 
+print 
+delete 34 
+print 
+add 54 ela 
+delete 14 
+print 
+add 74 ula 
+print 
+stop
+size 12 
+add 13 ala 
+add 23 ola 
+add 14 ula 
+add 34 ela 
+print 
+delete 34 
+print 
+add 54 ela 
+delete 14 
+print 
+add 74 ula 
+print 

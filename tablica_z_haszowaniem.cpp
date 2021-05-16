@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include <string>
-#include <algorithm>
+
+/*
+13.05.2021 - poprawienie rehaszowania tablicy -> było od poczatku tablicy, a powinno być od elementu usuwanego +1
+16.05.2021 - wyjaśniło się że przy hasowaniu za modułem powinien stać rozmiar tablicy, co było ciężko uzysakć
+
+*/
 
 class hashtable {
 public:
@@ -45,16 +50,21 @@ public:
 		std::cout << std::endl;
 	}
 
-	void rehashtable() {
-		for (int i = 0; i < capacity; i++) {
+	void rehashTable(int h) {
+		for (int i = h; i <= capacity; i++) {
 			if (items[i] != nullptr)
 			{
-				int ind = hash(items[i]->key);
+				int ind = getFirstFreeIndex(items[i]->key);
 				if (items[ind] == nullptr) {
 					items[ind] = items[i];
 					items[i] = nullptr;
 				}
 			}
+			else if (items[i] == nullptr)
+			{
+				break;
+			}
+			i = 0;
 		}
 	}
 
@@ -74,7 +84,7 @@ public:
 				}
 			}
 		}
-		rehashtable();
+		rehashTable(h + 1);
 	}
 
 private:
@@ -95,14 +105,12 @@ private:
 	}
 
 	int hash(long key) {
-		return key % 10;
+		return key % capacity;
 	}
 
 	int capacity;
 	item** items;
 };
-
-
 
 
 int main()

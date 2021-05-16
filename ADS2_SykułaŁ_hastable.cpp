@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <string>
 
-
 class hashtable {
 public:
 	struct item {
@@ -42,11 +41,30 @@ public:
 				std::cout << i << " " << items[i]->key << " " << items[i]->data << std::endl;
 			}
 		}
+		std::cout << std::endl;
+	}
+
+	void rehashTable(int h) {
+		for (int i = h; i <= capacity; i++) {
+			if (items[i] != nullptr)
+			{
+				int ind = getFirstFreeIndex(items[i]->key);
+				if (items[ind] == nullptr) {
+					items[ind] = items[i];
+					items[i] = nullptr;
+				}
+			}
+			else if (items[i] == nullptr)
+			{
+				break;
+			}
+			i = 0;
+		}
 	}
 
 	void deleteItem(long key) {
 		int h = hash(key);
-		if (items[h]->key == key) {
+		if (items[h] != nullptr && items[h]->key == key) {
 			delete items[h];
 			items[h] = nullptr;
 		}
@@ -60,6 +78,7 @@ public:
 				}
 			}
 		}
+		rehashTable(h + 1);
 	}
 
 private:
@@ -80,7 +99,7 @@ private:
 	}
 
 	int hash(long key) {
-		return key % 10;
+		return key % capacity;
 	}
 
 	int capacity;
@@ -88,14 +107,11 @@ private:
 };
 
 
-
-
 int main()
 {
 	std::string order;
 	int lp = 0;
 	long key2 = 0;
-	std::cout << "Liczba przypadkow ";
 	std::cin >> lp;
 	for (int i = 0; i < lp; i++) {
 		std::cin >> order;
