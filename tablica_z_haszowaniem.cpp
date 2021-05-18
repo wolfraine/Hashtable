@@ -4,7 +4,9 @@
 /*
 13.05.2021 - poprawienie rehaszowania tablicy -> było od poczatku tablicy, a powinno być od elementu usuwanego +1
 16.05.2021 - wyjaśniło się że przy hasowaniu za modułem powinien stać rozmiar tablicy, co było ciężko uzysakć
-
+18.05.2021 - poprawienie przypisania nowego elementu, jeżeli pierwszy if nie został spełniony był błąd w przypisaniu zmiennej h i rozpoczęciu w złym miejscu rehasowania, błąd wyszedł przy 3 różnych testach
+			 druga poprawka polega na dopisaniu warunku jeżeli tablica się kończy i jest zerowane
+			 ad.1 potrzebne przynajmniej 2-3 testy od wykładowcy !!!
 */
 
 class hashtable {
@@ -64,7 +66,9 @@ public:
 			{
 				break;
 			}
-			i = 0;
+			if (i == capacity) {
+				i = 0;
+			}
 		}
 	}
 
@@ -80,6 +84,7 @@ public:
 				if (items[newIndex] != nullptr && items[newIndex]->key == key) {
 					delete items[newIndex];
 					items[newIndex] = nullptr;
+					h = newIndex;
 					break;
 				}
 			}
