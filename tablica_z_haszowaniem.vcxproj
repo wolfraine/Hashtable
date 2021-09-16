@@ -24,6 +24,7 @@
     <ProjectGuid>{63fd9693-75f9-4e67-b77d-51c2e68a4d8e}</ProjectGuid>
     <RootNamespace>tablicazhaszowaniem</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Hastable</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

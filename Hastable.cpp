@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 
+
 class hashtable {
 public:
 	struct item {
@@ -58,7 +59,9 @@ public:
 			{
 				break;
 			}
-			i = 0;
+			if (i == capacity) {
+				i = 0;
+			}
 		}
 	}
 
@@ -74,6 +77,7 @@ public:
 				if (items[newIndex] != nullptr && items[newIndex]->key == key) {
 					delete items[newIndex];
 					items[newIndex] = nullptr;
+					h = newIndex;
 					break;
 				}
 			}
