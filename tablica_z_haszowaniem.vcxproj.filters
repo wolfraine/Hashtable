@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tablica_z_haszowaniem.cpp">
+    <ClCompile Include="Hastable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
